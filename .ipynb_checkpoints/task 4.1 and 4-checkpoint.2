@@ -1,0 +1,209 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "b41c7ef2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import cv2 as cv\n",
+    "import numpy as np\n",
+    "import imageio\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "df09f8f4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(600, 500, 3)"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# photo = np.zeros((600,500,3))\n",
+    "\n",
+    "photo = np.zeros([600,500,3], dtype=np.uint8)\n",
+    "photo.shape\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "0cdb3fce",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "photo[100:150,100:300]=[255,0,0]\n",
+    "photo[150:200,100:300]=[255,165,0]\n",
+    "photo[200:250,100:300]=[255,255,0]\n",
+    "photo[250:300,100:300]=[255,128,0]\n",
+    "photo[300:350,100:300]=[0,255,0]\n",
+    "photo[350:400,100:300]=[0,0,255]\n",
+    "photo[400:450,100:300]=[75,0,130]\n",
+    "photo[450:500,100:300]=[238,130,238]\n",
+    "photo[500:550,100:300]=[238,130,238]\n",
+    "photo[550:600,100:300]=[238,130,238]\n",
+    "photo[600:650,100:300]=[0,0,0]\n",
+    "\n",
+    "# im[0,0,:]=[255,0,0]       # red\n",
+    "# im[0,1,:]=[255,165,0]     # orange\n",
+    "# im[0,2,:]=[255,255,0]     # yellow\n",
+    "# im[0,3,:]=[0,255,0]       # green\n",
+    "# im[0,4,:]=[0,0,255]       # blue\n",
+    "# im[0,5,:]=[75,0,130]      # indigo\n",
+    "# im[0,6,:]=[238,130,238]   # violet\n",
+    "# im[0,7,:]=[0,0,0]         # black\n",
+    "# im[0,8,:]=[127,127,127]   # grey\n",
+    "# im[0,9,:]=[255,255,255]   # whi\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b030c4e7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cv.imshow(\"photo\",photo)\n",
+    "cv.waitKey()\n",
+    "cv.destroyAllWindows()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "089e25ba",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "small = cv.imread('small dog.jpg')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "394635c2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(183, 275, 3)"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "small.shape\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "414ce264",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lab = cv.imread('lad puppy.jpg')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "dce511fa",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(259, 194, 3)"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "lab.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "56d7085c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cv.imshow(\"small\",small)\n",
+    "cv.imshow(\"puppy\",lab)\n",
+    "cv.waitKey()\n",
+    "cv.destroyAllWindows()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "d93fa6c5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "crop_small = small[50:180,20:180]\n",
+    "lab[30:160,30:190] = crop_small\n",
+    "cv.imshow(\"swaping\",lab)\n",
+    "cv.waitKey()\n",
+    "cv.destroyAllWindows()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "176f2868",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d2835206",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
